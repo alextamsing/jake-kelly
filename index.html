@@ -1170,7 +1170,7 @@
       <p class="service-desc">In this session, I will answer your burning questions about the past, present and future. We will uncover the root cause of the challenges you're facing, reveal your potentials in this life and connect you with what your soul wants you to know.</p>
       <p class="service-desc" style="margin-top:0.8rem; font-style:italic;">Examples of things we can address: "Should I change careers?" "What's blocking money from coming in?" "What is the root cause of x health challenge?" "Am I a match to attracting the relationship I want?"</p>
       <p class="service-desc" style="margin-top:0.8rem;"><em>The reason there is an application process for sessions is to make sure that this work is the right fit for you, that I am the right person to facilitate it, and that it is in alignment with what your Higher Self has planned for this life.</em></p>
-      <a class="service-link" href="#contact">Apply</a>
+      <a class="service-link" href="#contact" onclick="setSession('Intuitive Read — $250 / 55 min')">Apply</a>
     </div>
     <div class="service-card fade-in fade-in-delay-2" id="service-transformation">
       <div class="service-number">02</div>
@@ -1180,7 +1180,7 @@
       <p class="service-desc">In this session we will go deep into the blocks that are holding you back from getting the things that you want. Whether it's getting the career, finances or relationship that feel out of reach, or healing from an illness or injury that you can't seem to figure out. This is where we start to undo the negative beliefs and programming that are keeping you from achieving the quality of life that is your divine right. You will receive tools that are specifically designed for you, so you can start to see real change in your life.</p>
       <p class="service-desc" style="margin-top:0.8rem;">This session includes energy healing. Some examples include: past and future timeline healings, energy frequency boost, energy recovery, energetic cord cutting, chakra boost, chakra repair, aura boost and repair, memory removal, dark energy clearing, akashic record download and more.</p>
       <p class="service-desc" style="margin-top:0.8rem;"><em>The reason there is an application process for sessions is to make sure that this work is the right fit for you, that I am the right person to facilitate it, and that it is in alignment with what your Higher Self has planned for this life.</em></p>
-      <a class="service-link" href="#contact">Apply</a>
+      <a class="service-link" href="#contact" onclick="setSession('Transformation Session — $350 / 75 min')">Apply</a>
     </div>
     <div class="service-card fade-in fade-in-delay-3" id="service-recorded-read">
       <div class="service-number">03</div>
@@ -1189,7 +1189,7 @@
       <p style="font-size:0.68rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--muted); margin-bottom:1rem;">20 minutes</p>
       <p class="service-desc">In this recorded read I will answer your top most burning question. If you just want an answer to one thing and don't need a full session, this is the offering for you.</p>
       <p class="service-desc" style="margin-top:0.8rem;"><em>The reason there is an application process for sessions is to make sure that this work is the right fit for you, that I am the right person to facilitate it, and that it is in alignment with what your Higher Self has planned for this life.</em></p>
-      <a class="service-link" href="#contact">Apply</a>
+      <a class="service-link" href="#contact" onclick="setSession('20 Minute Recorded Read — $90')">Apply</a>
     </div>
     <div class="service-card fade-in fade-in-delay-1" id="service-soul-clarity">
       <div class="service-number">04</div>
@@ -1198,7 +1198,7 @@
       <p style="font-size:0.68rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--muted); margin-bottom:1rem;">15 minutes</p>
       <p class="service-desc">If you aren't sure which session option is right for you, let's hop on a call and we can explore it together! This complimentary call is a chance to explore where you are, what you are needing help with, and which session is the right fit for you.</p>
       <p class="service-desc" style="margin-top:0.8rem;"><em>The reason there is an application process for sessions is to make sure that this work is the right fit for you, that I am the right person to facilitate it, and that it is in alignment with what your Higher Self has planned for this life.</em></p>
-      <a class="service-link" href="#contact">Apply</a>
+      <a class="service-link" href="#">Book</a>
     </div>
 </section>
 
@@ -1486,7 +1486,7 @@
           <option>Intuitive Read — $250 / 55 min</option>
           <option>Transformation Session — $350 / 75 min</option>
           <option>20 Minute Recorded Read — $90</option>
-          <option>Complimentary Soul Clarity Call — Free</option>
+
         </select>
       </div>
 
@@ -1498,12 +1498,14 @@
 
       <!-- Submit -->
       <div>
+        <p style="font-family:'Cormorant Garamond',serif; font-size:0.95rem; font-style:italic; color:var(--muted); margin-bottom:0.5rem;">Heads up — my emails sometimes land in junk! Add hello@jake-kelly.com to your contacts so we stay connected.</p>
         <button type="button" onclick="handleSubmit()" style="background:var(--deep); color:var(--cream); border:none; font-family:'Jost',sans-serif; font-size:0.7rem; letter-spacing:0.18em; text-transform:uppercase; padding:1rem 2.5rem; cursor:pointer; transition:background 0.3s;" onmouseover="this.style.background='#C9A96E'" onmouseout="this.style.background='#2C2318'">Submit Application</button>
       </div>
 
       <!-- Success message -->
       <div id="form-success" style="display:none; padding:1.2rem 1.5rem; border-left:2px solid var(--gold); background:var(--cream);">
         <p style="font-family:'Cormorant Garamond',serif; font-size:1.2rem; font-style:italic; color:var(--mid);">Thank you! I'll be in touch within 48 hours. I look forward to connecting with you.</p>
+        <p style="font-family:'Cormorant Garamond',serif; font-size:0.95rem; color:var(--muted); margin-top:0.75rem;">Please add <a href="mailto:hello@jake-kelly.com" style="color:var(--gold);">hello@jake-kelly.com</a> to your contacts and check your junk folder if you don't hear from me within 48 hours.</p>
       </div>
     </form>
   </div>
@@ -1559,6 +1561,13 @@
     img.src = url;
     if (label) label.style.display = 'none';
     slot.style.background = 'none';
+  }
+
+  function setSession(value) {
+    setTimeout(() => {
+      const select = document.querySelector('select[name="session"]');
+      if (select) select.value = value;
+    }, 100);
   }
 
   async function handleSubmit() {
