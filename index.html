@@ -1459,7 +1459,7 @@
     <h2 style="margin-bottom: 1rem;">Ready to <em>begin?</em></h2>
     <p style="font-size:1rem; line-height:1.8; color:var(--muted); margin-bottom:3rem; font-weight:300;">Fill out the form below and I'll be in touch within 48 hours to discuss the best next step for you.</p>
 
-    <form id="contact-form" action="https://formspree.io/f/xzezqwzz" method="POST" style="display:flex; flex-direction:column; gap:1.5rem;">
+    <form id="contact-form" style="display:flex; flex-direction:column; gap:1.5rem;">
       <!-- Name -->
       <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.5rem;">
         <div>
@@ -1498,7 +1498,7 @@
 
       <!-- Submit -->
       <div>
-        <button type="submit" style="background:var(--deep); color:var(--cream); border:none; font-family:'Jost',sans-serif; font-size:0.7rem; letter-spacing:0.18em; text-transform:uppercase; padding:1rem 2.5rem; cursor:pointer; transition:background 0.3s;" onmouseover="this.style.background='#C9A96E'" onmouseout="this.style.background='#2C2318'">Submit Application</button>
+        <button type="button" onclick="handleSubmit()" style="background:var(--deep); color:var(--cream); border:none; font-family:'Jost',sans-serif; font-size:0.7rem; letter-spacing:0.18em; text-transform:uppercase; padding:1rem 2.5rem; cursor:pointer; transition:background 0.3s;" onmouseover="this.style.background='#C9A96E'" onmouseout="this.style.background='#2C2318'">Submit Application</button>
       </div>
 
       <!-- Success message -->
@@ -1561,9 +1561,37 @@
     slot.style.background = 'none';
   }
 
-  function handleSubmit() {
-    document.getElementById('form-success').style.display = 'block';
-    window.scrollTo({ top: document.getElementById('form-success').offsetTop - 100, behavior: 'smooth' });
+  async function handleSubmit() {
+    const form = document.getElementById('contact-form');
+    const data = new FormData(form);
+    const success = document.getElementById('form-success');
+    const btn = form.querySelector('button');
+
+    btn.textContent = 'Sending...';
+    btn.disabled = true;
+
+    try {
+      const response = await fetch('https://formspree.io/f/xzezqwzz', {
+        method: 'POST',
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (response.ok) {
+        form.reset();
+        success.style.display = 'block';
+        btn.style.display = 'none';
+        success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      } else {
+        btn.textContent = 'Submit Application';
+        btn.disabled = false;
+        alert('Something went wrong. Please try again.');
+      }
+    } catch (error) {
+      btn.textContent = 'Submit Application';
+      btn.disabled = false;
+      alert('Something went wrong. Please try again.');
+    }
   }
 
   // Scroll-triggered fade-in
