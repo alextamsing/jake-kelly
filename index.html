@@ -1459,29 +1459,29 @@
     <h2 style="margin-bottom: 1rem;">Ready to <em>begin?</em></h2>
     <p style="font-size:1rem; line-height:1.8; color:var(--muted); margin-bottom:3rem; font-weight:300;">Fill out the form below and I'll be in touch within 48 hours to discuss the best next step for you.</p>
 
-    <div style="display:flex; flex-direction:column; gap:1.5rem;">
+    <form id="contact-form" action="https://formspree.io/f/xzezqwzz" method="POST" style="display:flex; flex-direction:column; gap:1.5rem;">
       <!-- Name -->
       <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.5rem;">
         <div>
           <label style="font-size:0.65rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--muted); display:block; margin-bottom:0.5rem;">First Name</label>
-          <input type="text" placeholder="Jane" style="width:100%; padding:0.85rem 1rem; border:1px solid var(--sand); background:var(--cream); font-family:'Jost',sans-serif; font-size:0.9rem; color:var(--text); outline:none; transition:border 0.3s;" onfocus="this.style.borderColor='#C9A96E'" onblur="this.style.borderColor='#E8DDD0'">
+          <input type="text" name="first_name" placeholder="Jane" required style="width:100%; padding:0.85rem 1rem; border:1px solid var(--sand); background:var(--cream); font-family:'Jost',sans-serif; font-size:0.9rem; color:var(--text); outline:none; transition:border 0.3s;" onfocus="this.style.borderColor='#C9A96E'" onblur="this.style.borderColor='#E8DDD0'">
         </div>
         <div>
           <label style="font-size:0.65rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--muted); display:block; margin-bottom:0.5rem;">Last Name</label>
-          <input type="text" placeholder="Smith" style="width:100%; padding:0.85rem 1rem; border:1px solid var(--sand); background:var(--cream); font-family:'Jost',sans-serif; font-size:0.9rem; color:var(--text); outline:none; transition:border 0.3s;" onfocus="this.style.borderColor='#C9A96E'" onblur="this.style.borderColor='#E8DDD0'">
+          <input type="text" name="last_name" placeholder="Smith" required style="width:100%; padding:0.85rem 1rem; border:1px solid var(--sand); background:var(--cream); font-family:'Jost',sans-serif; font-size:0.9rem; color:var(--text); outline:none; transition:border 0.3s;" onfocus="this.style.borderColor='#C9A96E'" onblur="this.style.borderColor='#E8DDD0'">
         </div>
       </div>
 
       <!-- Email -->
       <div>
         <label style="font-size:0.65rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--muted); display:block; margin-bottom:0.5rem;">Email Address</label>
-        <input type="email" placeholder="jane@email.com" style="width:100%; padding:0.85rem 1rem; border:1px solid var(--sand); background:var(--cream); font-family:'Jost',sans-serif; font-size:0.9rem; color:var(--text); outline:none; transition:border 0.3s;" onfocus="this.style.borderColor='#C9A96E'" onblur="this.style.borderColor='#E8DDD0'">
+        <input type="email" name="email" placeholder="jane@email.com" required style="width:100%; padding:0.85rem 1rem; border:1px solid var(--sand); background:var(--cream); font-family:'Jost',sans-serif; font-size:0.9rem; color:var(--text); outline:none; transition:border 0.3s;" onfocus="this.style.borderColor='#C9A96E'" onblur="this.style.borderColor='#E8DDD0'">
       </div>
 
       <!-- Session interest -->
       <div>
         <label style="font-size:0.65rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--muted); display:block; margin-bottom:0.5rem;">I'm interested in</label>
-        <select style="width:100%; padding:0.85rem 1rem; border:1px solid var(--sand); background:var(--cream); font-family:'Jost',sans-serif; font-size:0.9rem; color:var(--text); outline:none; appearance:none; transition:border 0.3s;" onfocus="this.style.borderColor='#C9A96E'" onblur="this.style.borderColor='#E8DDD0'">
+        <select name="session" required style="width:100%; padding:0.85rem 1rem; border:1px solid var(--sand); background:var(--cream); font-family:'Jost',sans-serif; font-size:0.9rem; color:var(--text); outline:none; appearance:none; transition:border 0.3s;" onfocus="this.style.borderColor='#C9A96E'" onblur="this.style.borderColor='#E8DDD0'">
           <option value="" disabled selected>Select a session</option>
           <option>Intuitive Read — $250 / 55 min</option>
           <option>Transformation Session — $350 / 75 min</option>
@@ -1493,19 +1493,19 @@
       <!-- Message -->
       <div>
         <label style="font-size:0.65rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--muted); display:block; margin-bottom:0.5rem;">Tell me a little about yourself & what you're hoping to work on</label>
-        <textarea rows="5" placeholder="Share whatever feels right..." style="width:100%; padding:0.85rem 1rem; border:1px solid var(--sand); background:var(--cream); font-family:'Jost',sans-serif; font-size:0.9rem; color:var(--text); outline:none; resize:vertical; transition:border 0.3s;" onfocus="this.style.borderColor='#C9A96E'" onblur="this.style.borderColor='#E8DDD0'"></textarea>
+        <textarea name="message" rows="5" placeholder="Share whatever feels right..." style="width:100%; padding:0.85rem 1rem; border:1px solid var(--sand); background:var(--cream); font-family:'Jost',sans-serif; font-size:0.9rem; color:var(--text); outline:none; resize:vertical; transition:border 0.3s;" onfocus="this.style.borderColor='#C9A96E'" onblur="this.style.borderColor='#E8DDD0'"></textarea>
       </div>
 
       <!-- Submit -->
       <div>
-        <button onclick="handleSubmit()" style="background:var(--deep); color:var(--cream); border:none; font-family:'Jost',sans-serif; font-size:0.7rem; letter-spacing:0.18em; text-transform:uppercase; padding:1rem 2.5rem; cursor:pointer; transition:background 0.3s;" onmouseover="this.style.background='#C9A96E'" onmouseout="this.style.background='#2C2318'">Submit Application</button>
+        <button type="submit" style="background:var(--deep); color:var(--cream); border:none; font-family:'Jost',sans-serif; font-size:0.7rem; letter-spacing:0.18em; text-transform:uppercase; padding:1rem 2.5rem; cursor:pointer; transition:background 0.3s;" onmouseover="this.style.background='#C9A96E'" onmouseout="this.style.background='#2C2318'">Submit Application</button>
       </div>
 
       <!-- Success message -->
       <div id="form-success" style="display:none; padding:1.2rem 1.5rem; border-left:2px solid var(--gold); background:var(--cream);">
         <p style="font-family:'Cormorant Garamond',serif; font-size:1.2rem; font-style:italic; color:var(--mid);">Thank you! I'll be in touch within 48 hours. I look forward to connecting with you.</p>
       </div>
-    </div>
+    </form>
   </div>
 </section>
 
